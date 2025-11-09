@@ -76,6 +76,13 @@ git_prompt() {
   cd - > /dev/null
 } && bc::cache git_prompt 1m 10s PWD
 
+# Prints the current Python virtual environment, if in one.
+python_venv_prompt() {
+  if [[ -n "${VIRTUAL_ENV_PROMPT-}" ]]; then
+    pg::print -p PURPLE "(${VIRTUAL_ENV_PROMPT})"
+  fi
+}
+
 # Prints the current screen session, if in one
 screen_prompt() {
   if [[ -n "$STY" ]]; then
