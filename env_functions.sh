@@ -82,3 +82,11 @@ screen_prompt() {
     pg::print -p CYAN "${STY#[0-9]*.}:${WINDOW}"
   fi
 }
+
+# Prints the current tmux session and window, if in one.
+tmux_prompt() {
+  if [[ -n "$TMUX" ]]; then
+    pg::print -p CYAN "$(tmux display-message -p '#S:#I:#W')"
+  fi
+}
+
